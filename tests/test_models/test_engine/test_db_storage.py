@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module for testing file storage"""
+"""test for file storage"""
 import unittest
 import pep8
 import json
@@ -14,6 +14,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models.engine.db_storage import DBStorage
+
 
 @unittest.skipIf(getenv("HBNB_TYPE_STORAGE") != 'db', 'NO DB')
 class TestDBStorage(unittest.TestCase):
@@ -55,14 +56,14 @@ class TestDBStorage(unittest.TestCase):
 
     @unittest.skipIf(getenv("HBNB_TYPE_STORAGE") != 'db', 'NO DB')
     def test_no_element_user(self):
-        """no elem in users"""
+        """no element in users"""
         self.query.execute("SELECT * FROM users")
         salida = self.query.fetchall()
         self.assertEqual(len(salida), 0)
 
     @unittest.skipIf(getenv("HBNB_TYPE_STORAGE") != 'db', 'NO DB')
     def test_no_element_cities(self):
-        """no elem in cities"""
+        """no element in cities"""
         self.query.execute("SELECT * FROM cities")
         salida = self.query.fetchall()
         self.assertEqual(len(salida), 0)
@@ -79,6 +80,7 @@ class TestDBStorage(unittest.TestCase):
         self.query.execute("SELECT * FROM states")
         salida = self.query.fetchall()
         self.assertEqual(len(salida), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
