@@ -29,12 +29,9 @@ class FileStorage:
         """
         Public instance method to delete obj from the __objects
         """
-        if not obj:
-            return
-        key = '{}.{}'.format(type(obj).__name__, obj.id)
-        if key in self.__objects:
+        if obj:
+            key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
-            self.save()
 
     def reload(self):
         """Loads storage dictionary from file"""
