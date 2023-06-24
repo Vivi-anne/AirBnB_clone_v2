@@ -59,14 +59,14 @@ class Place(BaseModel, Base):
         def reviews(self):
             """ Returns list of reviews.id """
             var = models.storage.all()
-            lisst = []
+            lista = []
             result = []
             for key in var:
                 review = key.replace('.', ' ')
                 review = shlex.split(review)
                 if (review[0] == 'Review'):
-                    lisst.append(var[key])
-            for elem in lisst:
+                    lista.append(var[key])
+            for elem in lista:
                 if (elem.place_id == self.id):
                     result.append(elem)
             return (result)
@@ -81,4 +81,3 @@ class Place(BaseModel, Base):
             """ Appends amenity ids to the attribute """
             if type(obj) is Amenity and obj.id not in self.amenity_ids:
                 self.amenity_ids.append(obj.id)
-
